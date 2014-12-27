@@ -1,5 +1,6 @@
-    class TextPresenter < Straightedge::Presenter
-      def display(label)
-	@surface.font.draw(label.text, x, y, ZOrder::UI, 1.0, 1.0, color) # 0xffffff00)
-      end
-    end
+class TextPresenter < Straightedge::Presenter
+  def display(label)
+    text = label.is_a?(String) ? label : label.text
+    @surface.font.draw(text, x, y, ZOrder::UI, 1.0, 1.0, color)
+  end
+end

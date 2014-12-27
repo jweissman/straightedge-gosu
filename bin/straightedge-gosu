@@ -6,10 +6,8 @@ if File.directory?(File.join(root,'.git'))
     begin
       require 'bundler/setup'
       require 'straightedge/gosu'
-      Straightedge::Engine.new(
-	director: Straightedge::Gosu::Director.new,
-	plane: Straightedge::Gosu::Surface.new
-      ).boot
+      window = Straightedge::Gosu::Surface.new 
+      Straightedge::Engine.new(surface: window).boot
     rescue LoadError => e
       warn e.message
       warn "Run `gem install bundler` to install Bundler"

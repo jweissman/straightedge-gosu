@@ -1,14 +1,12 @@
 module Straightedge
   module Gosu
     class Surface < ::Gosu::Window
-      extend Forwardable
+      include Straightedge::Surface
 
-      attr_accessor :adapter
       attr_reader :scene, :font
 
       def initialize(caption: "Gosu-as-a-Surface", 
 		     width: 300, height: 300) # scale: 1.0)
-	#@adapter = adapter
 	@width  = width  #* @scale
 	@height = height #* @scale
 	@scale = 1.0
@@ -16,6 +14,8 @@ module Straightedge
 	self.caption   = caption
 	@font = ::Gosu::Font.new(self, ::Gosu::default_font_name, 20)
       end
+
+      def display; show end
 
       def update; @adapter.step   end
       def draw;   @adapter.render end
