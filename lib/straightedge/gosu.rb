@@ -15,4 +15,11 @@ module Straightedge
     include Straightedge::Toolkit
     include Straightedge::Figures
   end
+
+  # maybe engines are expected to impl this in global namespace?
+  # or even override on director?
+  def self.default_surface_class
+    puts "--- using gosu surface!"
+    Straightedge::Gosu::Surface
+  end
 end

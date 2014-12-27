@@ -1,4 +1,3 @@
-require 'pry'
 class GridCellPresenter < QuadrilateralPresenter
   attr_accessor :scale
 
