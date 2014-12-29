@@ -12,7 +12,7 @@ class GridCellPresenter < QuadrilateralPresenter
   end
 
   def display(cell)
-    @color = Straightedge::Colors.hex_value(cell.color)
+    @color = cell.color
     super(cell)
   end
 end

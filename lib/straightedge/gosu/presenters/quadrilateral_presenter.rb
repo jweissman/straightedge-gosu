@@ -1,10 +1,13 @@
 class QuadrilateralPresenter < Straightedge::Presenter
+  include Straightedge
+
   def coordinates(w,h)
     [[x,y],[x,y+h],[x+w,y],[x+w,y+h]]
   end
 
   def coordinates_with_colors(w,h)
-    coordinates(w,h).map { |c| c + [color] }
+    clr = (color.is_a?(Symbol)||color.is_a?(String)) ? Colors.hex_value(color) : color
+    coordinates(w,h).map { |c| c + [clr] }
   end
 
   def display(rect)
