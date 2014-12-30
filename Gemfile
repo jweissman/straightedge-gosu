@@ -3,7 +3,7 @@ source :rubygems
 gemspec
 
 gem 'gosu'
-gem 'straightedge', path: '../straightedge'
+gem 'straightedge'
 
 group :development do
   gem 'pry'
