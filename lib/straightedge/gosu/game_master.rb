@@ -2,14 +2,15 @@ module Straightedge
   module Gosu
     class GameMaster < Straightedge::Director
       def orchestrate
-	warn "over-write game logic in GameMaster#orchestrate"
+	super
+	#warn "over-write game logic in GameMaster#orchestrate"
       end
 
-      def click(xy)
-	warn "received click at #{xy}"
+      def click(x, y)
+	warn "received click at #{x}, #{y}"
       end
     end
   end
 
-  config.agent = GameMaster
+  config.agent_class = Gosu::GameMaster
 end

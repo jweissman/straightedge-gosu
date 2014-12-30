@@ -1,10 +1,9 @@
 class GridPresenter < Straightedge::Presenter
   def display(grid) #, scale: 10.0)
-    cell_presenter = GridCellPresenter.new
-    cell_presenter.on(@surface)
-    cell_presenter.scale = grid.scale
-    grid.each_mark do |cell|
-      cell_presenter.at(cell).display(cell) #, self)
+    cell_presenter = QuadrilateralPresenter.new.on(@surface)
+    grid.each_cell do |cell| 
+      #puts "--- rendering cell in #{cell.color}"
+      cell_presenter.display(cell)
     end
   end
 end

@@ -1,17 +1,8 @@
-class QuadrilateralPresenter < Straightedge::Presenter
-  include Straightedge
-
-  def coordinates(w,h)
-    [[x,y],[x,y+h],[x+w,y],[x+w,y+h]]
-  end
-
-  def coordinates_with_colors(w,h)
-    clr = (color.is_a?(Symbol)||color.is_a?(String)) ? Colors.hex_value(color) : color
-    coordinates(w,h).map { |c| c + [clr] }
-  end
-
+class QuadrilateralPresenter < Straightedge::Gosu::Presenter
   def display(rect)
-    coords = coordinates_with_colors(rect.x, rect.y).flatten
-    @surface.draw_quad(*coords)
+    real_coords = rect.corners.map { |xy| [xy.x + rect.x, xy.y + rect.y ] }
+    colored_coords = colorize(real_coords, Straightedge::Colors.hex_value(rect.color))
+    #puts "--- rendering #{rect.color} at #{rect.x}, #{rect.y}"
+    @surface.draw_quad(*colored_coords)
   end
 end
